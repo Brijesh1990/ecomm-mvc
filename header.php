@@ -1,58 +1,133 @@
 <?php
-$mainurl="http://localhost/ecomm-mvc/";
-$baseurl="http://localhost/ecomm-mvc/assets/"; 
+$mainurl="http://localhost/culture-art/";
+$baseurl="http://localhost/culture-art/assets/"; 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Demo Bootstrap Template</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <!-- css static files of bootstrap -->
-    <link rel='stylesheet' type='text/css' media='screen' href="<?php echo $baseurl;?>css/bootstrap.min.css">
-    <link rel='stylesheet' type='text/css' media='screen' href="<?php echo $baseurl;?>css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="<?php echo $baseurl;?>css/style.css">
-    <!-- js static files of bootstrap -->
-    <script src="<?php echo $baseurl;?>js/jquery.slim.min.js"></script>
-    <script src="<?php echo $baseurl;?>js/bootstrap.min.js"></script>
-    <script src="<?php echo $baseurl;?>js/bootstrap.bundle.min.js"></script>
-    <style>
-     
-    </style>
+<title>Culture Art booked Appointment for Mehadi & Painting  | Home</title>
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Stylish Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //Custom Theme files -->
+<link href="<?php echo $baseurl;?>css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="<?php echo $baseurl;?>css/style.css" type="text/css" rel="stylesheet" media="all">
+<link rel="stylesheet" href="<?php echo $baseurl;?>css/flexslider.css" type="text/css" media="screen" />
+<!-- js -->
+<script src="<?php echo $baseurl;?>js/jquery-1.11.1.min.js"></script> 
+<!-- //js -->	
+<!-- start-smoth-scrolling-->
+<script type="text/javascript" src="<?php echo $baseurl;?>js/move-top.js"></script>
+<script type="text/javascript" src="<?php echo $baseurl;?>js/easing.js"></script>	
+<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+</script>
+<!--//end-smoth-scrolling-->
+<!--pop-up-->
+<script src="<?php echo $baseurl;?>js/menu_jquery.js"></script>
+<!--//pop-up-->
 </head>
 <body>
+	<!--header-->
+	<div class="header">
+		<div class="container">
+			<div class="header-left">
+				<ul> 
+					<li><a href="<?php echo $mainurl;?>register">ACCOUNT</a></li>
+					<li class="login" >
+						<div id="loginContainer"><a href="#" id="loginButton"><span>LOGIN</span></a>
+						    <div id="loginBox">                
+						        <form id="loginForm">
+									<fieldset id="body">
+										<fieldset>
+											<label for="email">Email Address</label>
+											<input type="text" name="email" id="email">
+										</fieldset>
+										<fieldset>
+											<label for="password">Password</label>
+											<input type="password" name="password" id="password">
+										</fieldset>
+										<input type="submit" id="login" value="Sign in">
+										<label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember me</i></label>
+									</fieldset>
+									<span><a href="#">Forgot your password?</a></span>
+								</form>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="logo">
+				<a href="<?php echo $mainurl;?>"> <img src="<?php echo $baseurl;?>images/logo.jfif" alt="" style="width:25%; height:auto;"/></a>
+			</div>
+			<div class="top-nav">
+				<span class="menu"><img src="<?php echo $baseurl;?>images/menu.png" alt=""/></span>
+				<ul>
+					<li><a class="active" href="<?php echo $mainurl;?>">Home</a></li>
+					<li><a href="<?php echo $mainurl;?>about">About</a></li>					
+					<li><a href="<?php echo $mainurl;?>gallery">Gallery</a></li>
+                    <li><a href="<?php echo $mainurl;?>news">News</a></li>
+					<li><a href="<?php echo $mainurl;?>contact">Contact</a></li>
+				</ul>
+				<!-- script-for-menu -->
+				<script>					
+							$("span.menu").click(function(){
+								$(".top-nav ul").slideToggle("slow" , function(){
+								});
+							});
+				</script>
+				<!-- script-for-menu -->
+			</div>
+			<div class="search-box">
+				<div id="sb-search" class="sb-search">
+					<form>
+						<input class="sb-search-input" placeholder="search term..." type="search" name="search" id="search">
+						<input class="sb-search-submit" type="submit" value="">
+						<span class="sb-icon-search"> </span>
+					</form>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+			<!-- search-scripts -->
+			<script src="<?php echo $baseurl;?>js/classie.js"></script>
+			<script src="<?php echo $baseurl;?>js/uisearch.js"></script>
+				<script>
+					new UISearch( document.getElementById( 'sb-search' ) );
+				</script>
+			<!-- //search-scripts -->
+		</div>
+	</div>	
+	<!--//header-->
 
-<!-- header start here -->
 
-<section class="header">
-<div class="container-fluid p-4">
-
-    <div class="row">
-        <div class="col-md-4">
-           <b> Email Us <a href="mailto:parasaniyaaaman18@gmail.com">parasaniyaaaman18@gmail.com</a></b>
-        </div>
-
-        <div class="col-md-5">
-            <input type="text" name="search" placeholder="Search Here ...." class="form-control">
-         </div>
-
-         <div class="col-md-3">
-          <i class="bi bi-facebook"  href="https://www.facebook.com/" style="color: blue; font-size: 28px; letter-spacing: 4px;"></i></a>
-            <i class="bi bi-instagram" style="color: red; font-size: 28px; letter-spacing: 4px;"></i>
-            <i class="bi bi-twitter" style="color: blue; font-size: 28px; letter-spacing: 4px;"></i>
-            <i class="bi bi-linkedin" style="color: red; font-size: 28px;  letter-spacing: 4px;"></i>
-            <i class="bi bi-snapchat" style="color: yellow; font-size: 28px; letter-spacing: 4px;"></i>
-         </div>
-
-
-    </div>
-
-</div>
-</section>
-
-
+    <script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			*/
+			
+			$().UItoTop({ easingType: 'easeOutQuart' });
+			
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	<!--//smooth-scrolling-of-move-up-->
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="<?php echo $baseurl;?>js/bootstrap.js"></script>
 </body>
 </html>

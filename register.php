@@ -1,67 +1,87 @@
-
-
-<!-- content start here -->
-
-<section class="content">
-    <div class="container mt-5">
-        <h3 class="bg-dark text-white p-2 text-center">Create Your Account Here</h3>
-        <hr class="border border-2 border-dark w-50">
-
-        <div class="row">
-            <div class="col-md-5">
-
-              <img src="<?php echo $baseurl;?>images/signup.gif" class="img-fluid w-100" style="width:90%; height:350px">
-
-            </div>
-        
-
-            <div class="col-md-7">
-
-        <form method="post">
-            <div class="form-group">
-                <input type="text" name="fname" placeholder="FirstName *" class="form-control">
-            </div>
-            
-            <div class="form-group">
-                <input type="text" name="lname" placeholder="LastName *" class="form-control">
-            </div>
-
-            
-            <div class="form-group">
-                <input type="text" name="email" placeholder="Email *" class="form-control">
-            </div>
-
-            
-            <div class="form-group">
-                <input type="date" name="dob" placeholder="DOB *" class="form-control">
-            </div>
-
-
-            
-            <div class="form-group">
-                <input type="text" name="edu" placeholder="Education *" class="form-control">
-            </div>
-
-
-            
-            <div class="form-group">
-                <textarea  name="address" placeholder="Address *" class="form-control"></textarea>
-            </div>
-
-
-            
-            <div class="form-group">
-                <input type="submit" name="submit" value="Register"  class="btn btn-dark btn-sm text-white">
-
-                <input type="reset" name="reset" value="Reset"  class="btn btn-danger btn-sm text-white">
-            </div>
-
-
-        </form>
-
-      </div>
-  </div>
-</div>
-
-</section>
-
+	<!--banner-->
+	<div class="banner1 about-bnr">
+	</div>	
+	<!--//banner-->
+	<!-- reg-form -->
+	<div class="account">
+		<div class="container">		
+			<div class="account-left">
+				<h1>new user ? <span> create an account </span></h1>
+				<!-- Form -->
+				<div class="registration_form">
+					<form method="post">
+						<div>
+							<label>
+								<input placeholder="first name" type="text" name="fname">
+							</label>
+						</div>
+						<div>
+							<label>
+								<input placeholder="last name" type="text" name="lname">
+							</label>
+						</div>
+						<div>
+							<label>
+								<input placeholder="email address" type="email" name="em">
+							</label>
+						</div>
+						<div>
+							<label>
+								<input placeholder="Mobile" type="text" name="mob">
+							</label>
+						</div>					
+							<div class="sky_form1">
+								<ul>
+									<li><label class="radio left"><input type="radio" name="gender" checked="" value="male"><i></i>Male</label></li>
+									<li><label class="radio"><input type="radio" name="gender" value="female"><i></i>Female</label></li>
+									<div class="clearfix"> </div>
+								</ul>
+							</div>					
+						<div>
+							<label>
+								<input placeholder="password" type="password" name="pass">
+							</label>
+						</div>						
+						<div>
+							<label>
+								<input placeholder="retype password" type="password" name="cpass">
+							</label>
+						</div>	
+						<div>
+							<input type="submit" name="reg" value="create an account" id="register-submit">
+						</div>
+						<div class="sky-form">
+							<label class="checkbox"><input type="checkbox" name="checkbox" ><i>i agree to example.com &nbsp;<a class="terms" href="#"> terms of service</a></i> </label>
+						</div>
+					</form>
+					<!-- /Form -->
+				</div>
+			</div>
+			<div class="account-left">
+				<h2>existing user</h2>
+				<div class="registration_form">
+					<!-- Form -->
+					<form id="registration_form">
+						<div>
+							<label>
+								<input placeholder="email" type="email" tabindex="3">
+							</label>
+						</div>
+						<div>
+							<label>
+								<input placeholder="password" type="password" tabindex="4">
+							</label>
+						</div>						
+						<div>
+							<input type="submit" value="sign in" id="register-submit">
+						</div>
+						<div class="forget">
+							<a href="#">forgot your password</a>
+						</div>
+					</form>
+					<!-- /Form -->
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
