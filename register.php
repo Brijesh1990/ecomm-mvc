@@ -9,8 +9,14 @@
 				<h1>new user ? <span> create an account </span></h1>
 				<!-- Form -->
 				<div class="registration_form">
-					<form method="post">
-						<div>
+					<form method="post" enctype="multipart/form-data">
+					<div>
+							<label>
+								<input placeholder="first name" type="file"  name="img">
+							</label>
+						</div>
+							
+					<div>
 							<label>
 								<input placeholder="first name" type="text" name="fname">
 							</label>
@@ -47,6 +53,62 @@
 								<input placeholder="retype password" type="password" name="cpass">
 							</label>
 						</div>	
+
+						<div>
+							<label>
+								<textarea placeholder="Address"  name="address"></textarea>
+							</label>
+						</div>
+
+						<div>
+							<label>
+								<select  placeholder="country"  name="country">
+									<option value="">Select Country</option>
+									<?php
+									foreach($country as $country1)
+									{ 
+									?>
+									<option value="<?php echo $country1["cid"]?>"><?php echo $country1["cname"]?></option>
+									<?php 
+									}
+									?>
+								</select>
+							</label>
+						</div>
+
+						<div>
+							<label>
+								<select  placeholder="state"  name="state">
+									<option value="">Select State</option>
+									<?php
+									foreach($state as $state1)
+									{ 
+									?>
+									<option value="<?php echo $state1["sid"]?>"><?php echo $state1["sname"]?></option>
+									<?php 
+									}
+									?>
+								</select>
+							</label>
+						</div>
+
+						<div>
+							<label>
+								<select  placeholder="city"  name="city">
+									<option value="">Select City</option>
+									<?php
+									foreach($city as $city1)
+									{ 
+									?>
+									<option value="<?php echo $city1["ctid"]?>"><?php echo $city1["ctname"]?></option>
+									<?php 
+									}
+									?>
+								</select>
+							</label>
+						</div>
+						
+					
 						<div>
 							<input type="submit" name="reg" value="create an account" id="register-submit">
 						</div>
@@ -72,6 +134,8 @@
 								<input placeholder="password" type="password" tabindex="4">
 							</label>
 						</div>						
+
+						
 						<div>
 							<input type="submit" value="sign in" id="register-submit">
 						</div>

@@ -27,6 +27,19 @@ class model
     return $exe;
   }
 
+  //fetch all data create a member function
+  public function selectalldata($table)
+  {
+    $select="select * from $table";
+    $exe=mysqli_query($this->connection,$select);
+    while($fetch=mysqli_fetch_array($exe))
+    {
+      $arr[]=$fetch;
+    } 
+    return $arr;
+    
+  }
+
 }
 
 ?>

@@ -66,7 +66,7 @@ $baseurl="http://localhost/culture-art/assets/";
 				</ul>
 			</div>
 			<div class="logo">
-				<a href="<?php echo $mainurl;?>"> <img src="<?php echo $baseurl;?>images/logo.jfif" alt="" style="width:25%; height:auto;"/></a>
+				<img src="<?php echo $baseurl;?>images/logo.png" alt=""/>
 			</div>
 			<div class="top-nav">
 				<span class="menu"><img src="<?php echo $baseurl;?>images/menu.png" alt=""/></span>

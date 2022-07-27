@@ -9,6 +9,13 @@ class controller extends model
         // create account for user or customer
         if(isset($_POST["reg"]))
         {
+            // upload image
+            $tmp_name=$_FILES["img"]["tmp_name"];
+            $type=$_FILES["img"]["type"];
+            $size=$_FILES["img"]["size"]/1024;
+            $path="uploads/customer/".$_FILES["img"]["name"];
+            move_uploaded_file($tmp_name,$path);
+
             $fname=$_POST["fname"];
             $lname=$_POST["lname"];
             $em=$_POST["em"];
@@ -16,7 +23,13 @@ class controller extends model
             $g=$_POST["gender"];
             $pass=base64_encode($_POST["pass"]);
             $cpass=base64_encode($_POST["cpass"]);
-            $data=array("firstname"=>$fname,"lastname"=>$lname,"email"=>$em,"mobile"=>$mob,"gender"=>$g,"password"=>$pass);
+            $add=$_POST["address"];
+            $cn=$_POST["country"];
+            $st=$_POST["state"];
+            $ct=$_POST["city"];
+            
+            $data=array("photo"=>$path,"firstname"=>$fname,"lastname"=>$lname,"email"=>$em,"mobile"=>$mob,"gender"=>$g,"password"=>$pass,"address"=>$add,"cid"=>$cn,"sid"=>$st,"ctid"=>$ct);
+
             if($pass==$cpass)
             {
             $chk=$this->insalldata('tbl_register',$data);
@@ -37,6 +50,32 @@ class controller extends model
             }
     
         }
+
+        //store data in contact us page
+
+        if(isset($_POST["addcontact"]))
+        {
+            $nm=$_POST["name"];
+            $em=$_POST["email"];
+            $phone=$_POST["phone"];
+            $msg=$_POST["msg"];
+            $data=array("name"=>$nm,"email"=>$em,"phone"=>$phone,"message"=>$msg);
+            $chk=$this->insalldata('tbl_contact',$data);
+            if($chk)
+            {
+                echo "<script>
+                alert('Thanks for contact with us Our one of Admin will contact with you Soon!')
+                window.location='contact';
+                </script>";
+            }
+        }
+
+        // fetch a country in register view 
+        $country=$this->selectalldata('tbl_country');
+        // fetch a state in register view 
+        $state=$this->selectalldata('tbl_state');
+        // fetch a city in register view 
+        $city=$this->selectalldata('tbl_city');
 
         if(isset($_SERVER["PATH_INFO"]))
         {

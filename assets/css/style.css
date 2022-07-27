@@ -64,15 +64,16 @@ body a:hover{
     margin-right: 10px;
     border-right: 2px solid #aaa;
 }
-.logo {
-    position: absolute;
-    top: 9%;
+.logo img{
+    
     z-index: 999;
-    left:46%;
+    width: 10% !important;
+    height: auto;
+    margin-left: 27%;
+    margin-top: -5%;
+    position: absolute;
 }
-.logo a {
-    display: block;
-}
+
 .top-nav {
     text-align: center;
     width: 80%;
@@ -112,7 +113,7 @@ span.menu {
 	min-height: 600px;
 }
 .banner2{
-	background:url(../images/banner1.jpg)no-repeat 0px 0px;
+	background:url(../images/banner1.webp)no-repeat 0px 0px;
 	background-size:cover; 
 }
 .banner3{
@@ -1196,7 +1197,10 @@ label {
 	margin-bottom: 0;
 	font-weight: normal;
 }
-.registration_form input[type="text"],.registration_form input[type="email"],.registration_form input[type="tel"],.registration_form input[type="password"]{
+.registration_form input[type="text"],.registration_form input[type="email"],.registration_form input[type="tel"],.registration_form input[type="password"],
+.registration_form select,.registration_form textarea
+
+{
 	padding: 8px;
 	display: block;
 	width:100%;
