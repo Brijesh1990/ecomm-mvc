@@ -1,3 +1,10 @@
+<link rel="stylesheet" href="<?php echo $baseurl;?>css/gray.css" type="text/css" media="screen" />
+<!-- bvalidator script -->
+<script>
+$(document).ready(function(){
+	$("#frm2").bValidator();
+})
+</script>
 
 	<!--banner-->
 	<div class="banner1 about-bnr">
@@ -26,14 +33,19 @@ Classic Gem, Dr Yagnik Rd, beside D. H. College, Rajkot, Gujarat 360001 </p>
 			</div>
 			<div class=" contact-form">
 				<h3 class="title">Contact form</h3>
-				<form method="post">
+				<form method="post" id="frm2">
 					<div class="col-md-6 form-grids">
-						<input type="text" name="name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-						<input type="text" name="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-						<input type="text" name="phone" value="Telephone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Telephone';}" required="">
+						<input type="text" name="name" placeholder="Enter Name *"  data-bvalidator="required">
+						<br><br>
+
+						<input type="text" name="email" placeholder="Enter Email *" data-bvalidator="required,email">
+						<br><br>
+						<input type="text" name="phone" placeholder="Enter Phone *"  data-bvalidator="required,minlen[10],maxlen[10]">
+						<br><br>
 					</div>
 					<div class="col-md-6 form-grids">
-						<textarea name="msg" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>	
+						<textarea name="msg" data-bvalidator="required" placeholder="Enter Address *" style="z-index:-5px !important"></textarea>	
+
 						<input type="submit" name="addcontact" value="Submit" >
 					</div>
 					<div class="clearfix"> </div>					

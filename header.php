@@ -14,9 +14,12 @@ $baseurl="http://localhost/culture-art/assets/";
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //Custom Theme files -->
 <link href="<?php echo $baseurl;?>css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-<link href="<?php echo $baseurl;?>css/style.css" type="text/css" rel="stylesheet" media="all">
 <link rel="stylesheet" href="<?php echo $baseurl;?>css/flexslider.css" type="text/css" media="screen" />
+
+<link href="<?php echo $baseurl;?>css/style.css" type="text/css" rel="stylesheet" media="all">
+
 <!-- js -->
+
 <script src="<?php echo $baseurl;?>js/jquery-1.11.1.min.js"></script> 
 <!-- //js -->	
 <!-- start-smoth-scrolling-->
@@ -33,6 +36,11 @@ $baseurl="http://localhost/culture-art/assets/";
 <!--//end-smoth-scrolling-->
 <!--pop-up-->
 <script src="<?php echo $baseurl;?>js/menu_jquery.js"></script>
+<!-- jquery bvalidator validation -->
+<script src="<?php echo $baseurl;?>js/jquery.bvalidator.min.js"></script>
+<script src="<?php echo $baseurl;?>js/default.min.js"></script>
+<script src="<?php echo $baseurl;?>js/gray.js"></script>
+
 <!--//pop-up-->
 </head>
 <body>
@@ -40,10 +48,17 @@ $baseurl="http://localhost/culture-art/assets/";
 	<div class="header">
 		<div class="container">
 			<div class="header-left">
-				<ul> 
-					<li><a href="<?php echo $mainurl;?>register">ACCOUNT</a></li>
-					<li class="login" >
-						<div id="loginContainer"><a href="#" id="loginButton"><span>LOGIN</span></a>
+            
+			<?php 
+            if(!isset($_SESSION["rid"]))
+			{
+			?>
+
+			<ul> 		
+			<li><a href="<?php echo $mainurl;?>register">ACCOUNT</a></li>
+
+		    <li class="login" ><div id="loginContainer"><a href="#" id="loginButton"><span>LOGIN</span></a>
+
 						    <div id="loginBox">                
 						        <form id="loginForm">
 									<fieldset id="body">
@@ -64,6 +79,28 @@ $baseurl="http://localhost/culture-art/assets/";
 						</div>
 					</li>
 				</ul>
+				<?php 
+				}
+				else 
+				{
+				?>
+				<ul>
+					<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown"><b class="text-success" style="font-size:20px">Welcome : <?php echo ucfirst($_SESSION["fname"]);?> </b></a>
+
+				<ul class="dropdown-menu">
+                  <li> <a href=""> Manage Profile </a></li>
+                  <li> <a href=""> Manage Notification </a></li>
+                  <li> <a href=""> Manage Order </a></li>
+                  <li> <a href=""> Change Password </a></li>
+                  <li style="margin-left: 10%;"><a href="<?php echo $mainurl;?>?logout-here" class="btn btn-sm btn-danger text-center" onclick="return confirm('Are You sure to Logout as Customer ?')"> Logout Here </a></li>
+				</ul>
+				
+				</li>
+				</ul>	
+				<?php 
+				}
+
+				?>
 			</div>
 			<div class="logo">
 				<img src="<?php echo $baseurl;?>images/logo.png" alt=""/>
@@ -76,6 +113,8 @@ $baseurl="http://localhost/culture-art/assets/";
 					<li><a href="<?php echo $mainurl;?>gallery">Gallery</a></li>
                     <li><a href="<?php echo $mainurl;?>news">News</a></li>
 					<li><a href="<?php echo $mainurl;?>contact">Contact</a></li>
+
+					
 				</ul>
 				<!-- script-for-menu -->
 				<script>					

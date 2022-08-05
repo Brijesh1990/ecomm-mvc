@@ -77,6 +77,45 @@ class controller extends model
         // fetch a city in register view 
         $city=$this->selectalldata('tbl_city');
 
+        // login as custumer 
+        if(isset($_POST["log"]))
+        {
+            $em=$_POST["em"];
+            $pass=base64_encode($_POST["pass"]);
+            $chk=$this->logindata('tbl_register',$em,$pass);
+            if($chk)
+            {
+                echo "<script>
+                alert('You are Logged In! successfully')
+                window.location='./';
+                </script>";
+            }
+            else 
+            {
+                echo "<script>
+                alert('Your email and password are wrong')
+                window.location='register';
+                </script>";
+
+            }
+        }
+
+        // logout here
+
+        if(isset($_GET["logout-here"]))
+        {
+            $lg=$_GET["logout-here"];
+            $lg=$this->logout();
+            if($lg)
+            {
+                echo "<script>
+                alert('You are Logout successfully')
+                window.location='register';
+                </script>";
+
+            }
+            
+        }
         if(isset($_SERVER["PATH_INFO"]))
         {
             switch($_SERVER["PATH_INFO"])

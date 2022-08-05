@@ -4,6 +4,7 @@ class model
   public $connection=""; 
   public function __construct()
   {
+    session_start();
     try 
     {
        $this->connection=new mysqli("localhost","root","","cultureartdb");
@@ -37,6 +38,36 @@ class model
       $arr[]=$fetch;
     } 
     return $arr;
+    
+  }
+  // create a member function for login 
+  public function logindata($table,$em,$pass)
+  {
+    $sel="select * from $table where email='$em' and password='$pass'";
+    $exe=mysqli_query($this->connection,$sel);
+    $num_rows=mysqli_num_rows($exe);
+    $fetch=mysqli_fetch_array($exe);
+    if($num_rows==1)
+    {
+      $_SESSION["rid"]=$fetch["rid"];
+      $_SESSION["fname"]=$fetch["firstname"];
+      $_SESSION["em"]=$fetch["email"];
+      return true;
+    }
+    else 
+    {
+      return false;
+    }
+  }
+
+  // create a member function for logout 
+  public function logout()
+  {
+    unset($_SESSION["rid"]);
+    unset($_SESSION["fname"]);
+    unset($_SESSION["em"]);
+    session_destroy();
+    return true;
     
   }
 
