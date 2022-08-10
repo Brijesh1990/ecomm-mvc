@@ -17,29 +17,29 @@ class model
 
   }
   //create a member function for insertalldata
-  // public function insalldata($table,$data)
-  // {
-  //   $k=array_keys($data);
-  //   $kk=implode(',',$k);
-  //   $v=array_values($data);
-  //   $vv=implode("','",$v);
-  //   $insert="insert into $table($kk) values ('$vv')";
-  //   $exe=mysqli_query($this->connection,$insert);
-  //   return $exe;
-  // }
+  public function insalldata($table,$data)
+  {
+    $k=array_keys($data);
+    $kk=implode(',',$k);
+    $v=array_values($data);
+    $vv=implode("','",$v);
+    $insert="insert into $table($kk) values ('$vv')";
+    $exe=mysqli_query($this->connection,$insert);
+    return $exe;
+  }
 
   //fetch all data create a member function
-  // public function selectalldata($table)
-  // {
-  //   $select="select * from $table";
-  //   $exe=mysqli_query($this->connection,$select);
-  //   while($fetch=mysqli_fetch_array($exe))
-  //   {
-  //     $arr[]=$fetch;
-  //   } 
-  //   return $arr;
+  public function selectalldata($table)
+  {
+    $select="select * from $table";
+    $exe=mysqli_query($this->connection,$select);
+    while($fetch=mysqli_fetch_array($exe))
+    {
+      $arr[]=$fetch;
+    } 
+    return $arr;
     
-  // }
+  }
   // create a member function for login 
   public function logindata($table,$em,$pass)
   {

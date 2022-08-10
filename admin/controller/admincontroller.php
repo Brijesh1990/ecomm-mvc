@@ -29,7 +29,46 @@ class controller extends model
 
             }
         }
+        // add category here
+        if(isset($_POST["addcategory"]))
+        {
+            $catnm=$_POST["catname"];
+            $addeddate=$_POST["adddate"];
+            $data=array("categoryname"=>$catnm,"addeddate"=>$addeddate);
+            $chk=$this->insalldata('tbl_addcategory',$data);
+            if($chk)
+            {
+            echo "<script>
+            alert('Your Category Added Successfully')
+            window.location='admin-addcategory';
+            </script>";
+       
+            }
+        }
 
+        // manage category
+        $shwcat=$this->selectalldata('tbl_addcategory');
+
+         // add subcategory here
+         if(isset($_POST["addsubcategory"]))
+         {
+             $catnm=$_POST["catname"];
+             $subcatnm=$_POST["subcatname"];
+             $addeddate=$_POST["adddate"];
+             $data=array("catid"=>$catnm,"subcategoryname"=>$subcatnm,"addeddate"=>$addeddate);
+             $chk=$this->insalldata('tbl_addsubcategory',$data);
+             if($chk)
+             {
+             echo "<script>
+             alert('Your SubCategory Added Successfully')
+             window.location='admin-addsubcategory';
+             </script>";
+        
+             }
+         }
+         // manage subcategory
+         $shwsubcat=$this->selectalldata('tbl_addsubcategory');
+ 
         // logout here
 
         if(isset($_GET["logout-here"]))
@@ -59,6 +98,21 @@ class controller extends model
                     require_once("header.php");
                     require_once("sidebar.php");
                     require_once("dashboard.php");
+                    require_once("footer.php");
+                    break;
+                case '/admin-addcategory': 
+                    require_once("index.php");
+                    require_once("header.php");
+                    require_once("sidebar.php");
+                    require_once("addcategory.php");
+                    require_once("footer.php");
+                    break;
+
+                case '/admin-addsubcategory': 
+                    require_once("index.php");
+                    require_once("header.php");
+                    require_once("sidebar.php");
+                    require_once("addsubcategory.php");
                     require_once("footer.php");
                     break;
                     
