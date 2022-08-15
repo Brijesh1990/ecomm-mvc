@@ -78,7 +78,7 @@ foreach($shwsubcat as $row)
 ?>
 <tr>
 <th scope="row"><?php echo $row["subcatid"];?></th>
-<td><?php echo $row["catid"];?></td>
+<td><?php echo $row["categoryname"];?></td>
 <td><?php echo $row["subcategoryname"];?></td>
 <td><?php echo $row["addeddate"];?></td>
 <td><a href="" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a> | <a href="" class="btn btn-info btn-sm"><i class="bi bi-pencil"></i></a> </td>

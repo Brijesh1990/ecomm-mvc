@@ -37,9 +37,40 @@ class model
     {
       $arr[]=$fetch;
     } 
+    return $arr;  
+  }
+
+
+  //fetch all data and join tables create a member function
+  public function selectjoin($table,$table1,$where)
+  {
+    $select="select * from $table join $table1 on $where";
+    $exe=mysqli_query($this->connection,$select);
+    while($fetch=mysqli_fetch_array($exe))
+    {
+      $arr[]=$fetch;
+    } 
     return $arr;
     
   }
+
+
+
+  
+  //fetch all data and join tables create a member function
+  public function selectjoin1($table,$table1,$table2,$where,$where1)
+  {
+    $select="select * from $table join $table1 on $where join $table2 on $where1";
+    $exe=mysqli_query($this->connection,$select);
+    while($fetch=mysqli_fetch_array($exe))
+    {
+      $arr[]=$fetch;
+    } 
+    return $arr;
+    
+  }
+
+
   // create a member function for login 
   public function logindata($table,$em,$pass)
   {

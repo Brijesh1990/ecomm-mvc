@@ -21,8 +21,8 @@
             </div>
             <a href="<?php echo $mainurl;?>admin-addcategory" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Add Category</a>
             <a href="<?php echo $mainurl;?>admin-addsubcategory" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Add Subcategory</a>
-            <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Add Products</a>
-            <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Manage Contacts</a>
+            <a href="<?php echo $mainurl;?>admin-addproduct" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Add Products</a>
+            <a href="<?php echo $mainurl;?>admin-managecontact" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Manage Contacts</a>
            
            
             <!-- <div class="nav-item dropdown">

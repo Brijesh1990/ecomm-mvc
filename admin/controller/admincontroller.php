@@ -1,4 +1,5 @@
 <?php
+error_reporting(0); 
 require_once("model/adminmodel.php");
 class controller extends model 
 {
@@ -48,6 +49,10 @@ class controller extends model
 
         // manage category
         $shwcat=$this->selectalldata('tbl_addcategory');
+        // manage subcategory in products as dropdown
+        $shwsubcat=$this->selectalldata('tbl_addsubcategory');
+         // manage all contacts
+         $shwcontact=$this->selectalldata('tbl_contact');
 
          // add subcategory here
          if(isset($_POST["addsubcategory"]))
@@ -67,8 +72,37 @@ class controller extends model
              }
          }
          // manage subcategory
-         $shwsubcat=$this->selectalldata('tbl_addsubcategory');
+         $shwsubcat=$this->selectjoin('tbl_addcategory','tbl_addsubcategory','tbl_addcategory.catid=tbl_addsubcategory.catid');
  
+           // add products here
+           if(isset($_POST["addprod"]))
+           {
+               $catnm=$_POST["catname"];
+               $subcatnm=$_POST["subcatname"];
+               $pname=$_POST["pname"];
+               $tmp_name=$_FILES["pimg"]["tmp_name"];
+               $path="uploads/products/".$_FILES["pimg"]["name"];
+               move_uploaded_file($tmp_name,$path);
+               $oprice=$_POST["oprice"];
+               $nprice=$_POST["nprice"];
+               $addate=$_POST["added_date"];
+               $pdesc=$_POST["pdesc"];    
+        
+               $data=array("catid"=>$catnm,"subcatid"=>$subcatnm,"pname"=>$pname,"pimage"=>$path,"oldprice"=>$oprice,"offerprice"=>$nprice,"added_date"=>$addate,"description"=>$pdesc);
+               $chk=$this->insalldata('tbl_products',$data);
+               if($chk)
+               {
+               echo "<script>
+               alert('Your Products Added Successfully')
+               window.location='admin-addproduct';
+               </script>";
+          
+               }
+           }
+
+        // manage products
+         $shwprod=$this->selectjoin1('tbl_products','tbl_addcategory','tbl_addsubcategory','tbl_products.catid=tbl_addcategory.catid','tbl_products.subcatid=tbl_addsubcategory.subcatid');
+
         // logout here
 
         if(isset($_GET["logout-here"]))
@@ -113,6 +147,20 @@ class controller extends model
                     require_once("header.php");
                     require_once("sidebar.php");
                     require_once("addsubcategory.php");
+                    require_once("footer.php");
+                    break;
+                case '/admin-addproduct': 
+                    require_once("index.php");
+                    require_once("header.php");
+                    require_once("sidebar.php");
+                    require_once("addproducts.php");
+                    require_once("footer.php");
+                    break;
+                case '/admin-managecontact': 
+                    require_once("index.php");
+                    require_once("header.php");
+                    require_once("sidebar.php");
+                    require_once("managecontacts.php");
                     require_once("footer.php");
                     break;
                     
