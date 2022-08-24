@@ -110,7 +110,7 @@ $baseurl="http://localhost/culture-art/assets/";
 				<ul>
 					<li><a class="active" href="<?php echo $mainurl;?>">Home</a></li>
 					<li><a href="<?php echo $mainurl;?>about">About</a></li>					
-					<li><a href="<?php echo $mainurl;?>gallery">Gallery</a></li>
+					<li><a href="<?php echo $mainurl;?>category">Category</a></li>
                     <li><a href="<?php echo $mainurl;?>news">News</a></li>
 					<li><a href="<?php echo $mainurl;?>contact">Contact</a></li>
 

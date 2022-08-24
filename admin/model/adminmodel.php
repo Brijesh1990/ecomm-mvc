@@ -53,10 +53,6 @@ class model
     return $arr;
     
   }
-
-
-
-  
   //fetch all data and join tables create a member function
   public function selectjoin1($table,$table1,$table2,$where,$where1)
   {
@@ -66,11 +62,8 @@ class model
     {
       $arr[]=$fetch;
     } 
-    return $arr;
-    
+    return $arr; 
   }
-
-
   // create a member function for login 
   public function logindata($table,$em,$pass)
   {
@@ -89,7 +82,17 @@ class model
       return false;
     }
   }
-
+  //create a member function for deletedata
+  public function dellalldata($table,$id)
+  {
+      $key=array_keys($id);
+      $key1=implode(",",$key);
+      $value=array_values($id);
+      $value1=implode("','",$value);
+      $delete="delete from $table where $key1='$value1'";
+      $exe=mysqli_query($this->connection,$delete);
+      return $exe;
+  } 
   // create a member function for logout 
   public function logout()
   {

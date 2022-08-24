@@ -100,6 +100,8 @@ class controller extends model
             }
         }
 
+        // fetch all category
+        $catnm=$this->selectalldata('tbl_addcategory');
         // logout here
 
         if(isset($_GET["logout-here"]))
@@ -146,6 +148,12 @@ class controller extends model
                     require_once("index.php");
                     require_once("header.php");
                     require_once("contact.php");
+                    require_once("footer.php");
+                    break;
+                case '/category': 
+                    require_once("index.php");
+                    require_once("header.php");
+                    require_once("category.php");
                     require_once("footer.php");
                     break;
             

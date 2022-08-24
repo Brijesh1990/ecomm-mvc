@@ -74,6 +74,21 @@ class controller extends model
          // manage subcategory
          $shwsubcat=$this->selectjoin('tbl_addcategory','tbl_addsubcategory','tbl_addcategory.catid=tbl_addsubcategory.catid');
  
+          // delete subcategory here
+        if(isset($_GET["delete-subcategory"]))
+        {
+            $id=base64_decode($_GET["delete-subcategory"]);
+            $id=array("subcatid"=>$id);
+            $chk=$this->dellalldata('tbl_addsubcategory',$id);
+            if($chk)
+            {
+            echo "<script>
+            alert('Your SubCategory Deleted Successfully')
+            window.location='admin-addsubcategory';
+            </script>";
+       
+            }
+        } 
            // add products here
            if(isset($_POST["addprod"]))
            {
@@ -103,8 +118,22 @@ class controller extends model
         // manage products
          $shwprod=$this->selectjoin1('tbl_products','tbl_addcategory','tbl_addsubcategory','tbl_products.catid=tbl_addcategory.catid','tbl_products.subcatid=tbl_addsubcategory.subcatid');
 
+        // delete category here
+        if(isset($_GET["delcategory"]))
+        {
+            $id=base64_decode($_GET["delcategory"]);
+            $id=array("catid"=>$id);
+            $chk=$this->dellalldata('tbl_addcategory',$id);
+            if($chk)
+            {
+            echo "<script>
+            alert('Your Category Deleted Successfully')
+            window.location='admin-addcategory';
+            </script>";
+       
+            }
+        } 
         // logout here
-
         if(isset($_GET["logout-here"]))
         {
             $lg=$_GET["logout-here"];
