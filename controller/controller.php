@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require_once("model/model.php");
 class controller extends model 
 {
@@ -102,6 +103,19 @@ class controller extends model
 
         // fetch all category
         $catnm=$this->selectalldata('tbl_addcategory');
+        // fetch all subcategory with category
+        if(isset($_GET["category_id"]))
+        {
+            $id=$_GET["category_id"];
+            $subcatnm=$this->selectsubcategorydetails('tbl_addsubcategory','catid',$id);
+        }
+        // fetch all products with subcategory
+        if(isset($_GET["product_id"]))
+        {
+            $id=$_GET["product_id"];
+            $productnm=$this->selectsubcategorydetails('tbl_products','subcatid',$id);
+        }
+       
         // logout here
 
         if(isset($_GET["logout-here"]))
@@ -156,7 +170,18 @@ class controller extends model
                     require_once("category.php");
                     require_once("footer.php");
                     break;
-            
+                case '/subcategorydetails': 
+                    require_once("index.php");
+                    require_once("header.php");
+                    require_once("subcategorydetails.php");
+                    require_once("footer.php");
+                    break;
+                case '/products': 
+                    require_once("index.php");
+                    require_once("header.php");
+                    require_once("products.php");
+                    require_once("footer.php");
+                    break;
                 default: 
                 require_once("header.php");
                 require_once("404.php");

@@ -40,6 +40,18 @@ class model
     return $arr;
     
   }
+  //fetch all data create a member function
+  public function selectsubcategorydetails($table,$column,$id)
+   {
+    $select="select * from $table where $column='$id'";
+    $exe=mysqli_query($this->connection,$select);
+    while($fetch=mysqli_fetch_array($exe))
+    {
+      $arr[]=$fetch;
+    } 
+    return $arr;
+    
+  }
   // create a member function for login 
   public function logindata($table,$em,$pass)
   {

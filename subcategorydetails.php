@@ -11,14 +11,11 @@
 
         <div class="row">
         <?php
-        foreach($catnm as $row) 
+        foreach($subcatnm as $row) 
         {
         ?>
         <div class="col-md-5  bg-dark text-white p-5" style="background-color:black; color:white; margin:15px; margin-left:5%; padding:15px">
-		
-		<a href="<?php echo $mainurl;?>subcategorydetails?category_id=<?php echo $row["catid"];?>"><h2 align="center"><?php echo $row["categoryname"];?></h2></a>
-	
-	
+		<a href="<?php echo $mainurl;?>products?product_id=<?php echo $row["subcatid"];?>"><h2 align="center"><?php echo $row["subcategoryname"];?></h2></a>
 	    </div>
 
         <?php 
