@@ -32,6 +32,7 @@
                 <td><img src="admin/<?php echo $row["pimage"];?>" class="img-fluid" style="width:80%; height:200px; margin-left:5%"></td>
                 <td><h3 align="center"><?php echo $row["pname"];?></h3></td>
                 <td><h5 align="center">Rs. <del><?php echo $row["oldprice"];?></del> <?php echo $row["offerprice"];?> </h5></td>
+                <td><a href="<?php echo $mainurl;?>productsdetails?proddetails=<?php echo $row["pid"];?>"><h4 align="center">click for More details >></h4></a></td>
                
             </tr>
              </tbody>

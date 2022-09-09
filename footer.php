@@ -1,5 +1,5 @@
 <!--footer-->
-<div class="footer">
+<div class="footer mt-5" style="margin-top:10%">
     <div class="container">
         <div class="footer-left">
             <p> © 2022 Culture Art. All rights reserved | Design by <a href="#">Krupansi Kansagara mahila College Rajkot</a></p>

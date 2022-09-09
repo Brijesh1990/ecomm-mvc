@@ -7,7 +7,13 @@ class model
     session_start();
     try 
     {
-       $this->connection=new mysqli("localhost","root","","cultureartdb");
+      
+      // localhost connection
+      // $this->connection=new mysqli("localhost","root","","cultureartdb");
+      
+      //server connection 
+      $this->connection=new mysqli("sql206.byethost7.com","b7_32555756","c12345","b7_32555756_cultureartdb");
+      
        //echo "connection successfully";
     } 
     catch(Exception $e)
@@ -52,6 +58,57 @@ class model
     return $arr;
     
   }
+  //fetch all cart data to total cart as used added 
+  public function selectcartcount($table,$column,$column1,$rid)
+   {
+    $select="select count($column) as total from $table where $column1='$rid'";
+    $exe=mysqli_query($this->connection,$select);
+    while($fetch=mysqli_fetch_array($exe))
+    {
+      $arr[]=$fetch;
+    } 
+    return $arr;
+    
+  }
+
+
+   //fetch all cart data to total cart as used added 
+   public function selectsubtotprice($table,$column,$column1,$rid)
+   {
+    $select="select sum($column) as total from $table where $column1='$rid'";
+    $exe=mysqli_query($this->connection,$select);
+    while($fetch=mysqli_fetch_array($exe))
+    {
+      $arr[]=$fetch;
+    } 
+    return $arr;
+    
+  }
+
+   //fetch or view cart as user added 
+   public function viewcartdata($table,$table1,$where,$column,$rid)
+   {
+     $select="select * from $table join $table1  on $where where $column='$rid'"; 
+    $exe=mysqli_query($this->connection,$select);
+    while($fetch=mysqli_fetch_array($exe))
+    {
+      $arr[]=$fetch;
+    } 
+    return $arr;
+    
+  }
+
+   //create a member function for deletedata
+   public function dellalldata($table,$id)
+   {
+       $key=array_keys($id);
+       $key1=implode(",",$key);
+       $value=array_values($id);
+       $value1=implode("','",$value);
+       $delete="delete from $table where $key1='$value1'";
+       $exe=mysqli_query($this->connection,$delete);
+       return $exe;
+   } 
   // create a member function for login 
   public function logindata($table,$em,$pass)
   {

@@ -1,6 +1,8 @@
 <?php
-$mainurl="http://localhost/culture-art/";
-$baseurl="http://localhost/culture-art/assets/"; 
+// $mainurl="http://localhost/culture-art/";
+// $baseurl="http://localhost/culture-art/assets/"; 
+$mainurl="http://cultureart.byethost7.com/";
+$baseurl="http://cultureart.byethost7.com/assets/";
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,8 +15,11 @@ $baseurl="http://localhost/culture-art/assets/";
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //Custom Theme files -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <link href="<?php echo $baseurl;?>css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 <link rel="stylesheet" href="<?php echo $baseurl;?>css/flexslider.css" type="text/css" media="screen" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 
 <link href="<?php echo $baseurl;?>css/style.css" type="text/css" rel="stylesheet" media="all">
 
@@ -85,7 +90,7 @@ $baseurl="http://localhost/culture-art/assets/";
 				{
 				?>
 				<ul>
-					<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown"><b class="text-success" style="font-size:20px">Welcome : <?php echo ucfirst($_SESSION["fname"]);?> </b></a>
+					<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown"><b class="text-success" style="font-size:15px">Welcome : <?php echo ucfirst($_SESSION["fname"]);?> </b></a>
 
 				<ul class="dropdown-menu">
                   <li> <a href=""> Manage Profile </a></li>
@@ -112,7 +117,23 @@ $baseurl="http://localhost/culture-art/assets/";
 					<li><a href="<?php echo $mainurl;?>about">About</a></li>					
 					<li><a href="<?php echo $mainurl;?>category">Category</a></li>
                     <li><a href="<?php echo $mainurl;?>news">News</a></li>
+
 					<li><a href="<?php echo $mainurl;?>contact">Contact</a></li>
+					<?php 
+                     if(!isset($_SESSION["rid"]))
+					 {
+					?>
+					<li><a href="<?php echo $mainurl;?>viewcart">Cart <i class="bi bi-cart"> </i><span class="badge bade-danger bg-danger"> 0 </span> </a></li>
+
+					<?php 
+					 }
+					 else 
+					 {
+						?>
+					<li><a href="<?php echo $mainurl;?>viewcart">Cart <i class="bi bi-cart"> </i><span class="badge bade-danger bg-danger"><?php echo $tot[0]["total"];?> </span> </a></li>
+					<?php 
+					 }
+					 ?>
 
 					
 				</ul>

@@ -103,6 +103,8 @@ class controller extends model
 
         // fetch all category
         $catnm=$this->selectalldata('tbl_addcategory');
+        // fetch all products
+        $prod=$this->selectalldata('tbl_products');
         // fetch all subcategory with category
         if(isset($_GET["category_id"]))
         {
@@ -115,6 +117,68 @@ class controller extends model
             $id=$_GET["product_id"];
             $productnm=$this->selectsubcategorydetails('tbl_products','subcatid',$id);
         }
+        // fetch  products details with pid
+        if(isset($_GET["proddetails"]))
+        {
+            $id=$_GET["proddetails"];
+            $proddetails=$this->selectsubcategorydetails('tbl_products','pid',$id);
+        }
+
+            //store products  in cart us page
+
+            if(isset($_POST["addtocart"]))
+            {
+                date_default_timezone_set("Asia/Calcutta");
+                $rid=$_SESSION["rid"];
+                $pid=$_POST["pid"];
+                $pnm=$_POST["pname"];
+                $price=$_POST["price"];
+                $added_date=date("d/m/Y H:i:s a");
+                $data=array("rid"=>$rid,"pid"=>$pid,"pname"=>$pnm,"price"=>$price,"added_date"=>$added_date);
+                $chk=$this->insalldata('tbl_cart',$data);
+                if($chk)
+                {
+                    echo "<script>
+                    alert('Product added successfuly in cart')
+                    window.location='viewcart';
+                    </script>";
+                }
+            }
+            // total count of cart
+            if(isset($_SESSION["rid"]))
+            {
+                $rid=$_SESSION["rid"];
+                $tot=$this->selectcartcount('tbl_cart','cartid','rid',$rid);
+            }
+             // all cart data view as user added of cart
+             if(isset($_SESSION["rid"]))
+             {
+                 $rid=$_SESSION["rid"];
+                 $cartview=$this->viewcartdata('tbl_cart','tbl_products','tbl_cart.pid=tbl_products.pid','rid',$rid);
+             }
+
+            // all cart of price subtotal 
+            if(isset($_SESSION["rid"]))
+            {
+                $rid=$_SESSION["rid"];
+                $subtot=$this->selectsubtotprice('tbl_cart','price','rid',$rid);
+            }
+
+                // delete subcategory here
+        if(isset($_GET["delcart"]))
+        {
+            $id=base64_decode($_GET["delcart"]);
+            $id=array("cartid"=>$id);
+            $chk=$this->dellalldata('tbl_cart',$id);
+            if($chk)
+            {
+            echo "<script>
+            alert('Your Cart Deleted Successfully')
+            window.location='viewcart';
+            </script>";
+       
+            }
+        } 
        
         // logout here
 
@@ -180,6 +244,32 @@ class controller extends model
                     require_once("index.php");
                     require_once("header.php");
                     require_once("products.php");
+                    require_once("footer.php");
+                    break;
+
+                    case '/allproducts': 
+                        require_once("index.php");
+                        require_once("header.php");
+                        require_once("allproducts.php");
+                        require_once("footer.php");
+                        break;
+                case '/productsdetails': 
+                    require_once("index.php");
+                    require_once("header.php");
+                    require_once("productsdetails.php");
+                    require_once("footer.php");
+                    break;
+                case '/viewcart': 
+                    require_once("index.php");
+                    require_once("header.php");
+                    require_once("viewcart.php");
+                    require_once("footer.php");
+                    break;
+
+                case '/checkout-here': 
+                    require_once("index.php");
+                    require_once("header.php");
+                    require_once("checkout.php");
                     require_once("footer.php");
                     break;
                 default: 
