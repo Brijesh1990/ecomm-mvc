@@ -9,10 +9,10 @@ class model
     {
       
       // localhost connection
-      // $this->connection=new mysqli("localhost","root","","cultureartdb");
+      $this->connection=new mysqli("localhost","root","","cultureartdb");
       
-      //server connection 
-      $this->connection=new mysqli("sql206.byethost7.com","b7_32555756","c12345","b7_32555756_cultureartdb");
+      // //server connection 
+      // $this->connection=new mysqli("sql206.byethost7.com","b7_32555756","c12345","b7_32555756_cultureartdb");
       
        //echo "connection successfully";
     } 

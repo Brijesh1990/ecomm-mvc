@@ -272,6 +272,18 @@ class controller extends model
                     require_once("checkout.php");
                     require_once("footer.php");
                     break;
+                case '/PaymentSuccess': 
+                    require_once("index.php");
+                    require_once("header.php");
+                    require_once("paymentssuccess.php");
+                    require_once("footer.php");
+                    break;
+                case '/PaymentFailure': 
+                    require_once("index.php");
+                    require_once("header.php");
+                    require_once("paymentfailure.php");
+                    require_once("footer.php");
+                    break;
                 default: 
                 require_once("header.php");
                 require_once("404.php");

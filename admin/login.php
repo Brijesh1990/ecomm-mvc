@@ -1,8 +1,8 @@
 <?php 
-// $mainurl="http://localhost/culture-art/admin/";
-// $baseurl="http://localhost/culture-art/admin/assets/";
-$mainurl="http://cultureart.byethost7.com/admin/";
-$baseurl="http://cultureart.byethost7.com/admin/assets/";
+$mainurl="http://localhost/culture-art/admin/";
+$baseurl="http://localhost/culture-art/admin/assets/";
+// $mainurl="http://cultureart.byethost7.com/admin/";
+// $baseurl="http://cultureart.byethost7.com/admin/assets/";
 ?>
 <!DOCTYPE html>
 <html lang="en">
