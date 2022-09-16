@@ -94,11 +94,46 @@ class model
     {
       $arr[]=$fetch;
     } 
-    return $arr;
-    
+    return $arr; 
   }
 
-   //create a member function for deletedata
+  //fetch to billing as user added 
+  public function billpr($table,$table1,$table2,$where,$where1,$column,$rid)
+  {
+    $select="select * from $table join $table1  on $where join $table2  on $where1 where $table.$column='$rid'"; 
+   $exe=mysqli_query($this->connection,$select);
+   while($fetch=mysqli_fetch_array($exe))
+   {
+     $arr[]=$fetch;
+   } 
+   return $arr;
+   
+ }
+
+
+  //fetch or view cart as user added 
+  public function manageprofile($table,$column,$rid)
+  {
+    $select="select * from $table  where $column='$rid'"; 
+   $exe=mysqli_query($this->connection,$select);
+   while($fetch=mysqli_fetch_array($exe))
+   {
+     $arr[]=$fetch;
+   } 
+   return $arr; 
+ }
+
+//update a data or porofile
+public function updata($table,$path,$fname,$lname,$em,$mob,$add,$column,$rid)
+{
+ $upd="update $table set photo='$path',firstname='$fname',lastname='$lname',email='$em',mobile='$mob',address='$add' where $column='$rid'";
+ $exe=mysqli_query($this->connection,$upd);
+ return $exe;
+
+}
+
+
+  //create a member function for deletedata
    public function dellalldata($table,$id)
    {
        $key=array_keys($id);

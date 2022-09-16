@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2022 at 09:30 AM
+-- Generation Time: Sep 16, 2022 at 09:11 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -39,8 +39,7 @@ CREATE TABLE `tbl_addcategory` (
 
 INSERT INTO `tbl_addcategory` (`catid`, `categoryname`, `addeddate`) VALUES
 (1, 'Mehandi', '2022-08-10'),
-(2, 'Painting', '2022-08-10'),
-(3, 'Bride Mehandi', '2022-08-10');
+(2, 'Painting', '2022-08-10');
 
 -- --------------------------------------------------------
 
@@ -62,7 +61,12 @@ CREATE TABLE `tbl_addsubcategory` (
 INSERT INTO `tbl_addsubcategory` (`subcatid`, `catid`, `subcategoryname`, `addeddate`) VALUES
 (1, 1, 'Exclusive bridal mehandi', '2022-08-10'),
 (2, 1, 'Wedding  mehandi', '2022-08-10'),
-(3, 2, 'New born baby clothes set painting for 6 day celebrations', '2022-08-10');
+(4, 1, 'Sider mehandi', '2022-08-31'),
+(5, 1, 'Party mehandi', '2022-08-31'),
+(6, 2, 'Baby arrival set', '2022-08-31'),
+(7, 2, 'Haldi kurta painting', '2022-08-31'),
+(8, 2, 'clothes painting', '2022-08-31'),
+(9, 2, 'Mask painting', '2022-08-31');
 
 -- --------------------------------------------------------
 
@@ -82,6 +86,30 @@ CREATE TABLE `tbl_admin` (
 
 INSERT INTO `tbl_admin` (`aid`, `email`, `password`) VALUES
 (1, 'cultureadmin@gmail.com', 'admin123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_cart`
+--
+
+CREATE TABLE `tbl_cart` (
+  `cartid` int(11) NOT NULL,
+  `rid` int(11) NOT NULL,
+  `pid` int(11) NOT NULL,
+  `pname` varchar(255) NOT NULL,
+  `price` int(11) NOT NULL,
+  `added_date` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_cart`
+--
+
+INSERT INTO `tbl_cart` (`cartid`, `rid`, `pid`, `pname`, `price`, `added_date`) VALUES
+(1, 3, 2, 'Wedding bride meadi', 250, '08/09/2022'),
+(3, 5, 1, 'Bridal mendi', 199, '09/09/2022 11:52:34 am'),
+(4, 5, 6, 'wedding mendi', 203, '09/09/2022 11:52:49 am');
 
 -- --------------------------------------------------------
 
@@ -155,6 +183,36 @@ INSERT INTO `tbl_country` (`cid`, `cname`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_products`
+--
+
+CREATE TABLE `tbl_products` (
+  `pid` int(11) NOT NULL,
+  `catid` int(11) NOT NULL,
+  `subcatid` int(11) NOT NULL,
+  `pname` varchar(255) NOT NULL,
+  `pimage` varchar(255) NOT NULL,
+  `oldprice` int(11) NOT NULL,
+  `offerprice` int(11) NOT NULL,
+  `added_date` varchar(255) NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_products`
+--
+
+INSERT INTO `tbl_products` (`pid`, `catid`, `subcatid`, `pname`, `pimage`, `oldprice`, `offerprice`, `added_date`, `description`) VALUES
+(1, 1, 1, 'Bridal mendi', 'uploads/products/p1.jpg', 250, 199, '2022-08-15', 'good'),
+(2, 1, 1, 'Wedding bride meadi', 'uploads/products/g1.jpg', 350, 250, '2022-08-15', 'hi'),
+(3, 1, 1, 'Bridal mendi', 'uploads/products/g1.jpg', 450, 250, '2022-08-31', 'fg'),
+(4, 1, 1, 'Bridal mendi', 'uploads/products/t3.jpg', 250, 199, '2022-08-31', 'sad'),
+(5, 1, 2, 'wedding mendi', 'uploads/products/t2.jpg', 255, 155, '2022-08-31', 'gg'),
+(6, 1, 2, 'wedding mendi', 'uploads/products/team1.jpg', 255, 203, '2022-08-31', 'adaa');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_register`
 --
 
@@ -179,8 +237,8 @@ CREATE TABLE `tbl_register` (
 
 INSERT INTO `tbl_register` (`rid`, `photo`, `firstname`, `lastname`, `email`, `mobile`, `gender`, `password`, `address`, `cid`, `sid`, `ctid`) VALUES
 (1, 'uploads/customer/t1.jpg', 'aman', 'pandya', 'aman@gmail.com', 9998003879, 'male', 'MTIzNDU2', '150 feet ring road rajkot', 1, 1, 1),
-(2, 'uploads/customer/', '', '', '', 0, 'male', '', '', 0, 0, 0),
-(3, 'uploads/customer/a5.jpg', 'krupanshi', 'pandya', 'krupanshi@gmail.com', 9998003879, 'male', 'MTIzNDU2', 'dfdfdf', 1, 1, 1);
+(3, 'uploads/customer/1.jpeg', 'krupanshi', 'faldu', 'krupanshifaldu@gmail.com', 9173357217, 'male', 'MTIzNDU2', '150 feet ring road rajkot', 1, 1, 1),
+(5, 'uploads/customer/7.webp', 'brijesh', 'pandey', 'bkpandey.pandey@gmail.com', 9998003879, 'male', 'MTIzNDU2', '150 feet ring road rajkot', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -227,6 +285,14 @@ ALTER TABLE `tbl_admin`
   ADD PRIMARY KEY (`aid`);
 
 --
+-- Indexes for table `tbl_cart`
+--
+ALTER TABLE `tbl_cart`
+  ADD PRIMARY KEY (`cartid`),
+  ADD KEY `rid` (`rid`),
+  ADD KEY `pid` (`pid`);
+
+--
 -- Indexes for table `tbl_city`
 --
 ALTER TABLE `tbl_city`
@@ -244,6 +310,14 @@ ALTER TABLE `tbl_contact`
 --
 ALTER TABLE `tbl_country`
   ADD PRIMARY KEY (`cid`);
+
+--
+-- Indexes for table `tbl_products`
+--
+ALTER TABLE `tbl_products`
+  ADD PRIMARY KEY (`pid`),
+  ADD KEY `catid` (`catid`),
+  ADD KEY `subcatid` (`subcatid`);
 
 --
 -- Indexes for table `tbl_register`
@@ -275,13 +349,19 @@ ALTER TABLE `tbl_addcategory`
 -- AUTO_INCREMENT for table `tbl_addsubcategory`
 --
 ALTER TABLE `tbl_addsubcategory`
-  MODIFY `subcatid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `subcatid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
   MODIFY `aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_cart`
+--
+ALTER TABLE `tbl_cart`
+  MODIFY `cartid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_city`
@@ -302,10 +382,16 @@ ALTER TABLE `tbl_country`
   MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `tbl_products`
+--
+ALTER TABLE `tbl_products`
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `tbl_register`
 --
 ALTER TABLE `tbl_register`
-  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_state`

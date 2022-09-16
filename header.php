@@ -94,7 +94,7 @@ $baseurl="http://localhost/culture-art/assets/";
 					<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown"><b class="text-success" style="font-size:15px">Welcome : <?php echo ucfirst($_SESSION["fname"]);?> </b></a>
 
 				<ul class="dropdown-menu">
-                  <li> <a href=""> Manage Profile </a></li>
+                  <li> <a href="<?php echo $manurl;?>Manageprofile"> Manage Profile </a></li>
                   <li> <a href=""> Manage Notification </a></li>
                   <li> <a href=""> Manage Order </a></li>
                   <li> <a href=""> Change Password </a></li>

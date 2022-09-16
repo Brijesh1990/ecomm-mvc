@@ -164,6 +164,21 @@ class controller extends model
                 $subtot=$this->selectsubtotprice('tbl_cart','price','rid',$rid);
             }
 
+             // bill print 
+             if(isset($_SESSION["rid"]))
+             {
+                 $rid=$_SESSION["rid"];
+                 $bill=$this->billpr('tbl_cart','tbl_register','tbl_products','tbl_cart.rid=tbl_register.rid','tbl_cart.pid=tbl_products.pid','rid',$rid);
+             }
+
+
+                // manage profile 
+                if(isset($_SESSION["rid"]))
+                {
+                    $rid=$_SESSION["rid"];
+                    $manageprof=$this->manageprofile('tbl_register','rid',$rid);
+                }
+   
                 // delete subcategory here
         if(isset($_GET["delcart"]))
         {
@@ -180,6 +195,37 @@ class controller extends model
             }
         } 
        
+
+           // update for user or customer
+           if(isset($_POST["upd"]))
+           {
+               // upload image
+               $rid=$_SESSION["rid"];
+
+               $tmp_name=$_FILES["img"]["tmp_name"];
+               $type=$_FILES["img"]["type"];
+               $size=$_FILES["img"]["size"]/1024;
+               $path="uploads/customer/".$_FILES["img"]["name"];
+               move_uploaded_file($tmp_name,$path);
+   
+               $fname=$_POST["fname"];
+               $lname=$_POST["lname"];
+               $em=$_POST["em"];
+               $mob=$_POST["mob"];
+               $add=$_POST["address"];
+              
+            //    $data=array("photo"=>$path,"firstname"=>$fname,"lastname"=>$lname,"email"=>$em,"mobile"=>$mob,"address"=>$add);
+   
+               $chk=$this->updata('tbl_register',$path,$fname,$lname,$em,$mob,$add,'rid',$rid);
+
+               if($chk)
+               {
+                   echo "<script>
+                   alert('Thanks for update your accountwith Us')
+                   window.location='Manageprofile';
+                   </script>";
+               } 
+               }
         // logout here
 
         if(isset($_GET["logout-here"]))
@@ -228,6 +274,13 @@ class controller extends model
                     require_once("contact.php");
                     require_once("footer.php");
                     break;
+
+                    case '/Manageprofile': 
+                        require_once("index.php");
+                        require_once("header.php");
+                        require_once("manageprofile.php");
+                        require_once("footer.php");
+                        break;
                 case '/category': 
                     require_once("index.php");
                     require_once("header.php");
@@ -284,7 +337,16 @@ class controller extends model
                     require_once("paymentfailure.php");
                     require_once("footer.php");
                     break;
-                default: 
+                case '/PrintInvoice': 
+                    require_once("index.php");
+                    require_once("header.php");
+                    require_once("invoice.php");
+                    require_once("footer.php");
+                    break;
+
+                 
+        
+               default: 
                 require_once("header.php");
                 require_once("404.php");
                 require_once("footer.php");

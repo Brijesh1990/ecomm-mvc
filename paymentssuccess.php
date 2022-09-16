@@ -68,7 +68,7 @@ echo "<h4>We have received a payment of Rs. " . $amount . ". Your order will soo
 ?>	
 
 <center>
-<a href="<?php echo $mainurl;?>PrintInvoice"><button type="button" class="btn btn-lg btn-danger" style="margin-left:1%">Go For Print Bill <span class="fa fa-file-o"></span></button></a>
+<a href="<?php echo $mainurl;?>PrintInvoice"><button type="button" class="btn btn-lg btn-danger" style="margin-left:1%" id="btn" onclick="pr()">Go For Print Bill <span class="fa fa-file-o"></span></button></a>
 
 </center>
 
@@ -93,3 +93,12 @@ echo "<h4>We have received a payment of Rs. " . $amount . ". Your order will soo
 </div>
 
 </div>
+
+
+<script>
+function pr()
+{
+    document.getElementById("btn").style="display:none";
+    window.print();
+}
+</script>
