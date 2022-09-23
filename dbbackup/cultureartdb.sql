@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2022 at 09:11 AM
+-- Generation Time: Sep 23, 2022 at 09:01 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -101,15 +101,6 @@ CREATE TABLE `tbl_cart` (
   `price` int(11) NOT NULL,
   `added_date` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_cart`
---
-
-INSERT INTO `tbl_cart` (`cartid`, `rid`, `pid`, `pname`, `price`, `added_date`) VALUES
-(1, 3, 2, 'Wedding bride meadi', 250, '08/09/2022'),
-(3, 5, 1, 'Bridal mendi', 199, '09/09/2022 11:52:34 am'),
-(4, 5, 6, 'wedding mendi', 203, '09/09/2022 11:52:49 am');
 
 -- --------------------------------------------------------
 
@@ -236,9 +227,7 @@ CREATE TABLE `tbl_register` (
 --
 
 INSERT INTO `tbl_register` (`rid`, `photo`, `firstname`, `lastname`, `email`, `mobile`, `gender`, `password`, `address`, `cid`, `sid`, `ctid`) VALUES
-(1, 'uploads/customer/t1.jpg', 'aman', 'pandya', 'aman@gmail.com', 9998003879, 'male', 'MTIzNDU2', '150 feet ring road rajkot', 1, 1, 1),
-(3, 'uploads/customer/1.jpeg', 'krupanshi', 'faldu', 'krupanshifaldu@gmail.com', 9173357217, 'male', 'MTIzNDU2', '150 feet ring road rajkot', 1, 1, 1),
-(5, 'uploads/customer/7.webp', 'brijesh', 'pandey', 'bkpandey.pandey@gmail.com', 9998003879, 'male', 'MTIzNDU2', '150 feet ring road rajkot', 1, 1, 1);
+(1, 'uploads/customer/7.webp', 'brijesh', 'pandey', 'bkpandey.pandey@gmail.com', 9998003879, 'male', 'YnJpajEyMw==', '150 feet ring road', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -361,7 +350,7 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `cartid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cartid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_city`
@@ -391,7 +380,7 @@ ALTER TABLE `tbl_products`
 -- AUTO_INCREMENT for table `tbl_register`
 --
 ALTER TABLE `tbl_register`
-  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_state`

@@ -83,6 +83,7 @@ class controller extends model
         {
             $em=$_POST["em"];
             $pass=base64_encode($_POST["pass"]);
+
             $chk=$this->logindata('tbl_register',$em,$pass);
             if($chk)
             {
@@ -226,8 +227,61 @@ class controller extends model
                    </script>";
                } 
                }
-        // logout here
 
+        //  forget password 
+        if(isset($_POST["frg"]))
+        {
+            $em=$_POST["em"];
+            $pass=$this->frgpassword('tbl_register',$em);
+            if($pass)
+            {
+                echo "<script>
+                alert('Your password is :'+''+'$pass')
+                window.location='register';
+                </script>";
+
+            }
+
+            else 
+            {
+                echo "<script>
+                alert('Your email does not exist try with another email')
+                window.location='forget-password';
+                </script>";
+
+            }
+
+        }
+
+        //  change  password 
+        if(isset($_POST["chng"]))
+        {
+            $rid=$_SESSION["rid"];
+            $opass=base64_encode($_POST["opass"]);
+            $npass=base64_encode($_POST["npass"]);
+            $cpass=base64_encode($_POST["cpass"]);
+
+            $chk=$this->chngpassword('tbl_register',$opass,$npass,$cpass,$rid);
+            if($chk)
+            {
+                echo "<script>
+                alert('Your password is successfully changed')
+                window.location='Manageprofile';
+                </script>";
+
+            }
+
+            else 
+            {
+                echo "<script>
+                alert('Your opass,npass and confirm password does not matched')
+                window.location='change-password';
+                </script>";
+
+            }
+
+        }
+        // logout here
         if(isset($_GET["logout-here"]))
         {
             $lg=$_GET["logout-here"];
@@ -262,8 +316,15 @@ class controller extends model
                 case '/forget-password': 
                     require_once("index.php");
                     require_once("header.php");
-                    require_once("navbar.php");
                     require_once("forgetpassword.php");
+                    require_once("footer.php");
+                    require_once("applynow.php");
+                    require_once("login.php");
+                    break;
+                case '/change-password': 
+                    require_once("index.php");
+                    require_once("header.php");
+                    require_once("changepassword.php");
                     require_once("footer.php");
                     require_once("applynow.php");
                     require_once("login.php");
@@ -344,8 +405,6 @@ class controller extends model
                     require_once("footer.php");
                     break;
 
-                 
-        
                default: 
                 require_once("header.php");
                 require_once("404.php");

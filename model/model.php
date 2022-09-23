@@ -129,11 +129,9 @@ public function updata($table,$path,$fname,$lname,$em,$mob,$add,$column,$rid)
  $upd="update $table set photo='$path',firstname='$fname',lastname='$lname',email='$em',mobile='$mob',address='$add' where $column='$rid'";
  $exe=mysqli_query($this->connection,$upd);
  return $exe;
-
 }
 
-
-  //create a member function for deletedata
+//create a member function for deletedata
    public function dellalldata($table,$id)
    {
        $key=array_keys($id);
@@ -157,6 +155,43 @@ public function updata($table,$path,$fname,$lname,$em,$mob,$add,$column,$rid)
       $_SESSION["fname"]=$fetch["firstname"];
       $_SESSION["em"]=$fetch["email"];
       return true;
+    }
+    else 
+    {
+      return false;
+    }
+  }
+
+  // create a member function for forget password 
+  public function frgpassword($table,$em)
+  {
+    $sel="select password from $table where email='$em'"; 
+    $exe=mysqli_query($this->connection,$sel);
+    $num_rows=mysqli_num_rows($exe);
+    $fetch=mysqli_fetch_array($exe);
+    $pass=base64_decode($fetch['password']);
+    if($num_rows==1)
+    {
+      return $pass;
+    }
+    else 
+    {
+      return false;
+    }
+  }
+
+  // create a member function for forget password 
+  public function chngpassword($table,$opass,$npass,$cpass,$rid)
+  {
+    $sel="select password from $table where rid='$rid'"; 
+    $exe=mysqli_query($this->connection,$sel);
+    $fetch=mysqli_fetch_array($exe);
+    $pass=$fetch['password'];
+    if($pass==$opass && $npass==$cpass)
+    {
+      $upd="update $table set password='$npass'  where rid='$rid'"; 
+      $exe=mysqli_query($this->connection,$upd);
+      return $exe;
     }
     else 
     {

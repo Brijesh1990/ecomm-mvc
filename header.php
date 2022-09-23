@@ -97,7 +97,7 @@ $baseurl="http://localhost/culture-art/assets/";
                   <li> <a href="<?php echo $manurl;?>Manageprofile"> Manage Profile </a></li>
                   <li> <a href=""> Manage Notification </a></li>
                   <li> <a href=""> Manage Order </a></li>
-                  <li> <a href=""> Change Password </a></li>
+                  <li> <a href="<?php echo $mainurl;?>change-password"> Change Password </a></li>
                   <li style="margin-left: 10%;"><a href="<?php echo $mainurl;?>?logout-here" class="btn btn-sm btn-danger text-center" onclick="return confirm('Are You sure to Logout as Customer ?')"> Logout Here </a></li>
 				</ul>
 				

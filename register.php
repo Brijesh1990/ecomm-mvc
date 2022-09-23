@@ -153,7 +153,7 @@ $(document).ready(function(){
 							<input type="submit" name="log" value="sign in" id="register-submit">
 						</div>
 						<div class="forget">
-							<a href="#">forgot your password</a>
+							<a href="<?php echo $mainurl;?>forget-password">forgot your password</a>
 						</div>
 					</form>
 					<!-- /Form -->
