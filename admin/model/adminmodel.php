@@ -97,6 +97,29 @@ class model
       $exe=mysqli_query($this->connection,$delete);
       return $exe;
   } 
+
+   //fetch all category data create a member function
+   public function editdata($table,$column,$id)
+   {
+     $select="select * from $table where $column='$id'";
+     $exe=mysqli_query($this->connection,$select);
+     while($fetch=mysqli_fetch_array($exe))
+     {
+       $arr[]=$fetch;
+     } 
+     return $arr;  
+   }
+
+
+    //fetch all category data create a member function
+    public function upcatdata($table,$catnm,$addate,$column,$id)
+    {
+      $upd="update $table set categoryname='$catnm',addeddate='$addate' where $column='$id'";
+      $exe=mysqli_query($this->connection,$upd);
+      return $exe;  
+    }
+
+
   // create a member function for logout 
   public function logout()
   {

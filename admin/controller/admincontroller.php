@@ -133,6 +133,32 @@ class controller extends model
        
             }
         } 
+        // fetch or edit category for update 
+        if(isset($_GET["editcat"]))
+        {
+            $id=$_GET["editcat"];
+            $edcat=$this->editdata('tbl_addcategory','catid',$id);
+
+        }
+
+        // update category data 
+         if(isset($_POST["updcategory"]))
+         {
+            $id=$_GET["editcat"];
+            $catnm=$_POST["catname"];
+            $addate=$_POST["adddate"];
+            //$id=array("catid"=>$catid);
+            $chk=$this->upcatdata('tbl_addcategory',$catnm,$addate,'catid',$id);
+            if($chk)
+            {
+            echo "<script>
+            alert('Your Category Updated Successfully')
+            window.location='admin-addcategory';
+            </script>";
+       
+            }
+         }
+
         // logout here
         if(isset($_GET["logout-here"]))
         {
@@ -170,6 +196,13 @@ class controller extends model
                     require_once("addcategory.php");
                     require_once("footer.php");
                     break;
+                    case '/edit-category': 
+                        require_once("index.php");
+                        require_once("header.php");
+                        require_once("sidebar.php");
+                        require_once("editcategory.php");
+                        require_once("footer.php");
+                        break;
 
                 case '/admin-addsubcategory': 
                     require_once("index.php");

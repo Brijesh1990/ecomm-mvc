@@ -59,7 +59,7 @@ if(!isset($_SESSION["aid"]))
                                         <th scope="row"><?php echo $row["catid"];?></th>
                                         <td><?php echo $row["categoryname"];?></td>
                                         <td><?php echo $row["addeddate"];?></td>
-                                        <td><a href="<?php echo $mainurl;?>admin-addcategory?delcategory=<?php echo base64_encode($row["catid"]);?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete Category ?')"><i class="bi bi-trash"></i></a> | <a href="" class="btn btn-info btn-sm"><i class="bi bi-pencil"></i></a> </td>
+                                        <td><a href="<?php echo $mainurl;?>admin-addcategory?delcategory=<?php echo base64_encode($row["catid"]);?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete Category ?')"><i class="bi bi-trash"></i></a> | <a href="<?php echo $mainurl;?>edit-category?editcat=<?php echo $row["catid"];?>" class="btn btn-info btn-sm"><i class="bi bi-pencil"></i></a> </td>
                                     </tr>
                                    <?php 
                                     }
